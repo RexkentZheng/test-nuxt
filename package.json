@@ -1,0 +1,31 @@
+{
+  "name": "test-nuxt",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "郑韩京 <rex.zheng@admaster.com>",
+  "private": true,
+  "scripts": {
+    "dev": "HOST=0.0.0.0 PORT=9001 nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "iview": "^2.14.2",
+    "nuxt": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-import": "^1.8.0",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0",
+    "lodash": "^4.17.10",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.3"
+  }
+}
