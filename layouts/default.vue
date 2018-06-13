@@ -5,13 +5,13 @@
       <Layout>
         <Sider hide-trigger :style="{background: '#fff'}">
           <Menu active-name="1-2" theme="light" width="auto">
-            <Submenu v-for="opConfig in sidebarConfig" :key="opConfig.name" :name="opConfig.name" >
+            <Submenu v-for="opConfig in sidebarConfig" :key="opConfig.classFirst" :name="opConfig.classFirst" >
               <template slot="title">
                 <Icon type="ios-navigate"></Icon>
-                {{opConfig.firstTitle}}
+                {{opConfig.classFirst}}
               </template>
               <MenuItem
-                v-for="opSecond in opConfig.secondTitle"
+                v-for="opSecond in opConfig.classSecond"
                 :key="opSecond"
                 :name="opSecond"
               ><p @click="jumpToArticle(opSecond)">{{opSecond}}</p></MenuItem>
@@ -34,29 +34,36 @@
 </template>
 <script>
 import LayoutHeader from './layout-header';
+import axios from 'axios';
+
 export default {
   data () {
       return {
-        sidebarConfig: [{
-          "firstTitle": "一级标题",
-          "name": "1",
-          "secondTitle": ["二级标题1","二级标题2","二级标题3","二级标题4","二级标题5","二级标题6","二级标题7"]
-        },{
-          "firstTitle": "一级标题",
-          "name": "2",
-          "secondTitle": ["二级标题11","二级标题22","二级标题33","二级标题44","二级标题55","二级标题66","二级标题77"]
-        }],
+        sidebarConfig: [],
       }
   },
   components:{
     LayoutHeader,
   },
+  mounted(){
+    this.init();
+  },
   methods: {
+    init(){
+      axios.get('http://localhost:8888/nuxtConf/List')
+        .then((response) => {
+          let res = response.data;
+          if (res.status === 0) {
+            this.sidebarConfig = res.result.class;
+          } else {
+            this.$Message.error('数据获取失败，请稍后再试');
+          }
+        })
+    },
     jumpToArticle(title){
       console.log(title);
       this.$router.push({
-        path:'/articles',
-        query:{'title':title}
+        path:`/articles/${title}`
       })
     }
   }
