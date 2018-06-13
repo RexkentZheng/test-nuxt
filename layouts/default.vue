@@ -53,10 +53,8 @@ export default {
   },
   methods: {
     jumpToArticle(title){
-      console.log(title);
       this.$router.push({
-        path:'/articles',
-        query:{'title':title}
+        path:`/articles/${title}`
       })
     }
   }

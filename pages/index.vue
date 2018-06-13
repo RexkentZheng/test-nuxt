@@ -8,28 +8,18 @@
       <h2 class="subtitle">
         Nuxt.js project
       </h2>
-      <p class="test-red">red</p>
-      <div class="container1">
-        green
-      </div>
       <div class="links">
         <Input v-model="value" placeholder="Enter something..." style="width: 300px" />
       </div>
-      <nuxt-link to="/demo">跳转一级路由测试</nuxt-link>
-      <br/>
-      <nuxt-link to="/demo1">中间件</nuxt-link>
-      <br/>
-      <nuxt-link :to="{path:'/demo/param',query:{id:2}}">跳转带参数路由</nuxt-link><br/>
-      <Button type="primary">Primary</Button>
+      <br />
       <Button type="ghost">Ghost</Button>
-      <Button type="dashed">Dashed</Button>
     </div>
   </section>
 </template>
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
-import { Button, Table } from 'iview';
+import { Input, Button, Table } from 'iview';
 
 export default {
   data () {
