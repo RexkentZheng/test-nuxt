@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>这里是文章基准页</p>
     <ul>
       <li
         v-if="articleList.length > 0"
@@ -24,12 +25,11 @@ export default {
   },
   methods:{
     init(){
-      axios.get('http://localhost:8888/nuxt/List')
+      axios.get('http://39.106.140.189:7777/articles/allList')
         .then((response) => {
           let res = response.data;
           if (res.status === 0) {
             this.articleList = res.result;
-            console.log(this.articleList);
           } else {
             this.$Message.error('获取数据失败，请稍后重试');
           }
@@ -37,7 +37,7 @@ export default {
     },
     jumpPage(title){
       this.$router.push({
-        path: `/articles/${title}`,
+        path: `/articles/title/${title}`,
       });
     }
   }

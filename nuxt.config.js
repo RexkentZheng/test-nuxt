@@ -3,13 +3,6 @@ module.exports = {
     './assets/main.css',
     '~assets/main.scss',
   ],
-  dev: {
-    proxyTable: {
-    	'/nuxt/*':{
-    		target:'http://localhost:8888'
-    	},
-    },
-  },
 
   head: {
     title: 'test-nuxt',

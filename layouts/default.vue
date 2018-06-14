@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     init(){
-      axios.get('http://localhost:8888/nuxtConf/List')
+      axios.get('http://39.106.140.189:7777/config/Class')
         .then((response) => {
           let res = response.data;
           if (res.status === 0) {
@@ -60,9 +60,9 @@ export default {
           }
         })
     },
-    jumpToArticle(title){
+    jumpToArticle(type){
       this.$router.push({
-        path:`/articles/${title}`
+        path:`/articles/type/${type}`
       })
     }
   }

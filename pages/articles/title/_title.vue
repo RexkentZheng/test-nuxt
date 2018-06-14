@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>文章详情页</p>
     <h2>{{articleInfo.title}}</h2>
     <p>{{articleInfo.content}}</p>
   </div>
@@ -14,14 +15,15 @@ export default {
   },
   mounted() {
   },
-  watch:{
-    $route(){
-      this.getData();
-    }
+  created() {
+    this.getData();
+  },
+  watch:  {
+    '$route':'getData'
   },
   methods: {
     getData(){
-      axios.post('http://localhost:8888/nuxt/Details',{
+      axios.post('http://39.106.140.189:7777/articles/Details',{
         title: this.$route.params.title
       }).then((response) => {
         let res = response.data;
