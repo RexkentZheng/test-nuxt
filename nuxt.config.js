@@ -17,7 +17,7 @@ module.exports = {
   },
   // 引入UI组件
   plugins: [
-    { src: '~plugins/ui-view', ssr: false}
+    { src: '~plugins/ui-view', ssr: true}
   ],
 
   loading: { color: '#3B8070' },
