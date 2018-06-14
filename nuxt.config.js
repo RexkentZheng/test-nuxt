@@ -31,6 +31,13 @@ module.exports = {
       }]]
     },
 
+    loaders:[
+      {
+        test: /\.css$/,
+        loader: 'vue-style-loader!css-loader'
+      }
+    ],
+
     vendor: ['axios','lodash'],
 
     extend (config, { isDev, isClient }) {
