@@ -1,6 +1,6 @@
 const Nuxt = require('nuxt')
 const app = require('express')()
-const port = process.env.PORT || 6666
+const port = 6666
 
 // 传入配置初始化 Nuxt.js 实例
 let config = require('./nuxt.config.js')

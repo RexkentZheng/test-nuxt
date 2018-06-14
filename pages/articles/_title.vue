@@ -2,7 +2,6 @@
   <div>
     <h2>{{articleInfo.title}}</h2>
     <p>{{articleInfo.content}}</p>
-    <h1>文章详情页面</h1>
   </div>
 </template>
 <script>

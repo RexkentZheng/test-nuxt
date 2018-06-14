@@ -11,9 +11,6 @@ module.exports = {
     },
   },
 
-  // router: {
-  //   middleware: 'middle'
-  // },
   head: {
     title: 'test-nuxt',
     meta: [
