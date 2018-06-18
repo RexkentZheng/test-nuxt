@@ -2,6 +2,7 @@ module.exports = {
   css: [
     './assets/main.css',
     '~assets/main.scss',
+    'iview/dist/styles/iview.css',
   ],
 
   head: {
