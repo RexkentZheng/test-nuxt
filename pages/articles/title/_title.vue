@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     getData(){
-      axios.post('http://39.106.140.189:7777/articles/Details',{
+      axios.post('http://localhost:7777/articles/Details',{
         title: this.$route.params.title
       }).then((response) => {
         let res = response.data;

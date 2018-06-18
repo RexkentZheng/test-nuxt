@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     init(){
-      axios.get('http://39.106.140.189:7777/config/Class')
+      axios.get('http://localhost:7777/config/Class')
         .then((response) => {
           let res = response.data;
           if (res.status === 0) {

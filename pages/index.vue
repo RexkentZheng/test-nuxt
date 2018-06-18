@@ -13,6 +13,7 @@
       </div>
       <br />
       <Button type="ghost">Ghost</Button>
+      <p class="test-red">This is Red</p>
     </div>
   </section>
 </template>
