@@ -35,6 +35,7 @@
 <script>
 import LayoutHeader from './layout-header';
 import axios from 'axios';
+import 'iview/dist/styles/iview.css';
 
 export default {
   data () {

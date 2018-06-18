@@ -1,11 +1,6 @@
 import Vue from 'vue'
-
-if (process.BROWSER_BUILD) {
-  require('iview')
-}
-
 import { Layout, Submenu, Menu, MenuItem, Sider, Content, Icon, Button, Input, Message } from 'iview'
-
+import 'iview/dist/styles/iview.css'
 
 
 Vue.component('Layout', Layout);
