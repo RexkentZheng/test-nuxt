@@ -21,6 +21,10 @@
 import AppLogo from '~/components/AppLogo.vue'
 import { Input, Button, Table } from 'iview';
 
+if (process.BROWSER_BUILD) {
+  require('iview')
+}
+
 export default {
   data () {
       return {

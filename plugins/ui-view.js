@@ -2,6 +2,10 @@ import Vue from 'vue'
 import 'iview/dist/styles/iview.css';
 import { Layout, Submenu, Menu, MenuItem, Sider, Content, Icon, Button, Input, Message } from 'iview'
 
+if (process.BROWSER_BUILD) {
+  require('iview')
+}
+
 Vue.component('Layout', Layout);
 Vue.component('Menu', Menu);
 Vue.component('MenuItem', MenuItem);

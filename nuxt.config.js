@@ -17,7 +17,7 @@ module.exports = {
   },
   // 引入UI组件
   plugins: [
-    { src: '~plugins/ui-view', ssr: true}
+    { src: '~plugins/ui-view', ssr: false}
   ],
 
   loading: { color: '#3B8070' },
@@ -38,7 +38,7 @@ module.exports = {
       }
     ],
 
-    vendor: ['axios','lodash'],
+    vendor: ['axios','lodash','iview'],
 
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
