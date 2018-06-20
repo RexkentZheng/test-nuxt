@@ -2,40 +2,38 @@
   <div class="layout">
     <Layout>
       <LayoutHeader />
-      <Layout>
-        <Sider hide-trigger :style="{background: '#fff'}">
-          <Menu active-name="1-2" theme="light" width="auto">
-            <Submenu v-for="opConfig in sidebarConfig" :key="opConfig.classFirst" :name="opConfig.classFirst" >
-              <template slot="title">
-                <Icon type="ios-navigate"></Icon>
-                {{opConfig.classFirst}}
-              </template>
-              <MenuItem
-                v-for="opSecond in opConfig.classSecond"
-                :key="opSecond"
-                :name="opSecond"
-              ><p @click="jumpToArticle(opSecond)">{{opSecond}}</p></MenuItem>
-            </Submenu>
-          </Menu>
-        </Sider>
-        <Layout :style="{padding: '0 24px 24px'}">
-          <!-- <Breadcrumb :style="{margin: '24px 0'}">
-              <BreadcrumbItem>Home</BreadcrumbItem>
-              <BreadcrumbItem>Components</BreadcrumbItem>
-              <BreadcrumbItem>Layout</BreadcrumbItem>
-          </Breadcrumb> -->
-          <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-            <nuxt/>
-          </Content>
-        </Layout>
+      <Layout :style="{padding: '0 50px'}">
+        <BreadcrumbComponent />
+        <Content :style="{padding: '24px 0', minHeight: '280px', background: '#fff'}">
+          <Layout>
+            <Sider hide-trigger :style="{background: '#fff'}">
+              <Menu active-name="1-2" theme="light" width="auto">
+                <Submenu v-for="opConfig in sidebarConfig" :key="opConfig.classFirst" :name="opConfig.classFirst" >
+                  <template slot="title">
+                    <Icon type="ios-navigate"></Icon>
+                    {{opConfig.classFirst}}
+                  </template>
+                  <MenuItem
+                    v-for="opSecond in opConfig.classSecond"
+                    :key="opSecond"
+                    :name="opSecond"
+                  ><p @click="jumpToArticle(opSecond)">{{opSecond}}</p></MenuItem>
+                </Submenu>
+              </Menu>
+            </Sider>
+            <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+              <nuxt/>
+            </Content>
+          </Layout>
+        </Content>
       </Layout>
     </Layout>
   </div>
 </template>
 <script>
+import BreadcrumbComponent from '~/components/breadcrumb';
 import LayoutHeader from './layout-header';
 import axios from 'axios';
-import 'iview/dist/styles/iview.css';
 
 export default {
   data () {
@@ -45,6 +43,7 @@ export default {
   },
   components:{
     LayoutHeader,
+    BreadcrumbComponent,
   },
   mounted(){
     this.init();
@@ -86,5 +85,30 @@ html {
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
+}
+.layout{
+    border: 1px solid #d7dde4;
+    background: #f5f7f9;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.layout-logo{
+    width: 100px;
+    height: 30px;
+    background: #5b6270;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 20px;
+}
+.layout-nav{
+    width: 420px;
+    margin: 0 auto;
+    margin-right: 20px;
+}
+.layout-footer-center{
+    text-align: center;
 }
 </style>

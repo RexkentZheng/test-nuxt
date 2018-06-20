@@ -15,22 +15,16 @@
             主页
           </p>
         </MenuItem>
-        <MenuItem name="2" >
-          <p @click="jumpPage('/articles')" >
-            <Icon type="document"></Icon>
-            文章列表
+        <MenuItem name="2">
+          <p @click="jumpPage('/personal')" >
+            <Icon type="person"></Icon>
+            登录
           </p>
         </MenuItem>
         <MenuItem name="3">
-          <p @click="jumpPage('/personal')" >
-            <Icon type="person"></Icon>
-            个人中心
-          </p>
-        </MenuItem>
-        <MenuItem name="4">
           <p @click="jumpPage('/settings')" >
-            <Icon type="gear-b"></Icon>
-            设置
+            <Icon type="edit"></Icon>
+            注册
           </p>
         </MenuItem>
       </div>

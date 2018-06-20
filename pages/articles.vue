@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <div>这里是文章主页</div>
+  <div class='container'>
     <nuxt-child/>
   </div>
 </template>

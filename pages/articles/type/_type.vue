@@ -1,13 +1,20 @@
 <template>
   <div>
-    <div>这里是文章类型列表主页</div>
-    <!-- <nuxt-child /> -->
     <p v-if="articleList.length === 0">当前分类目前没有文章</p>
     <ul v-if="articleList.length > 0">
       <li
         v-for="op in articleList"
         :key="op.title"
-      ><a @click="jumpPage(op.title)">{{op.title}}</a></li>
+      >
+        <div class="one-article">
+          <div class="title">
+            <a @click="jumpPage(op.title)">{{op.title}}</a>
+          </div>
+          <div class="short-cut">
+            <p>{{op.content}}</p>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </template>
@@ -29,7 +36,7 @@ export default {
   methods:{
     init(){
       const classSecond = this.$route.params.type;
-      axios.get('http://39.106.140.189:7777/articles/typeList', {
+      axios.get('http://localhost:7777/articles/typeList', {
         params:{
           classSecond
         }

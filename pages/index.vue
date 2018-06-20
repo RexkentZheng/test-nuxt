@@ -1,66 +1,54 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        test-nuxt
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <Input v-model="value" placeholder="Enter something..." style="width: 300px" />
-      </div>
-      <br />
-      <Button type="ghost">Ghost</Button>
-      <p class="test-red">This is Red</p>
-    </div>
-  </section>
+  <div class="container">
+    <ul class="main-content">
+      <li
+        v-if="articleList.length > 0"
+        v-for="op in articleList"
+        :key="op.title">
+        <div class="one-article">
+          <div class="title">
+            <a @click="jumpPage(op.title)">{{op.title}}</a>
+          </div>
+          <div class="short-cut">
+            <p>{{op.content}}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
 import { Input, Button, Table } from 'iview';
+import axios from 'axios';
+import 'normalize.css'
 
 export default {
   data () {
-      return {
-          value: ''
-      }
+    return {
+      articleList: [],
+    }
   },
-  components: {
-    AppLogo
+  mounted(){
+    this.init();
+  },
+  methods:{
+    init(){
+      axios.get('http://localhost:7777/articles/allList')
+        .then((response) => {
+          let res = response.data;
+          if (res.status === 0) {
+            this.articleList = res.result;
+          } else {
+            this.$Message.error('获取数据失败，请稍后重试');
+          }
+        })
+    },
+    jumpPage(title){
+      this.$router.push({
+        path: `/articles/title/${title}`,
+      });
+    }
   }
 }
 </script>
-
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>

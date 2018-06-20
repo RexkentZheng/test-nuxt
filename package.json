@@ -22,6 +22,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "iview": "^2.14.2",
+    "normalize.css": "^8.0.0",
     "nuxt": "^1.0.0"
   },
   "devDependencies": {

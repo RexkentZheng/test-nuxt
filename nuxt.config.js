@@ -1,5 +1,6 @@
 module.exports = {
   css: [
+    'normalize.css',
     './assets/main.css',
     '~assets/main.scss',
     'iview/dist/styles/iview.css',

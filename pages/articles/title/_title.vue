@@ -1,7 +1,6 @@
 <template>
   <div>
-    <p>文章详情页</p>
-    <h2>{{articleInfo.title}}</h2>
+    <h2 class="m-b-2">{{articleInfo.title}}</h2>
     <p>{{articleInfo.content}}</p>
   </div>
 </template>

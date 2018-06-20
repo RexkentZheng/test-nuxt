@@ -1,14 +1,27 @@
-.container1
-{
-  height: inherit;
-  padding: 0 15px;
-  color: red;
+@import "./clear.scss";
+@import "./spacing.scss";
+
+.one-article{
+  width: 600px;
+  height: 60px;
+  margin-bottom: 20px;
+  .title {
+    padding: 2px 5px;
+  }
+  .short-cut {
+    padding: 2px 5px;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    overflow:hidden;
+    -webkit-line-break:auto;
+    -webkit-box-orient:vertical;
+  }
 }
-.test-red
-{
-  color: red;  
+
+.container {
+  min-height: 100vh;
 }
-.app
-{
-  color: red;  
+
+.main-content{
+  margin: 0 20px;
 }
