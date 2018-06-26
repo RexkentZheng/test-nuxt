@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Layout, Submenu, Menu, MenuItem, Sider, Content, Icon, Button, Input, Message, BreadcrumbItem, Breadcrumb } from 'iview'
+import { Layout, Submenu, Menu, MenuItem, Sider, Content, Icon, Button, Input, Message, BreadcrumbItem, Breadcrumb, Spin } from 'iview'
 import 'iview/dist/styles/iview.css'
 
 
@@ -15,6 +15,6 @@ Vue.component('Input', Input);
 Vue.component('Message', Message);
 Vue.component('Breadcrumb', Breadcrumb);
 Vue.component('BreadcrumbItem', BreadcrumbItem);
-// Vue.component('', );
+Vue.component('Spin', Spin);
 // Vue.component('', );
 // Vue.component('', );

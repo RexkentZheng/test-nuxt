@@ -8,24 +8,21 @@
 <script>
 import { Breadcrumb, BreadcrumbItem } from 'iview';
 import _ from 'lodash';
+import { breadTrans } from '~/static/config'
 
 export default {
   data(){
     return {
-      breadConfig: {
-        '/articles/type': '文章类型',
-        '/articles/title': '文章内容',
-      }
     }
   },
   computed:{
     secondBread(){
       return this.$route.matched.length > 2
-        ? this.breadConfig[this.$route.matched[1].path]
+        ? '文章类型'
         : '';
     },
     paramBread(){
-      return _.values(this.$route.params)[0];
+      return breadTrans[_.values(this.$route.params)[0]];
     }
   },
   

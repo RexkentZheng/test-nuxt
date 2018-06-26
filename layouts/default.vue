@@ -8,16 +8,18 @@
           <Layout>
             <Sider hide-trigger :style="{background: '#fff'}">
               <Menu active-name="1-2" theme="light" width="auto">
-                <Submenu v-for="opConfig in sidebarConfig" :key="opConfig.classFirst" :name="opConfig.classFirst" >
+                <Submenu :name="1">
                   <template slot="title">
                     <Icon type="ios-navigate"></Icon>
-                    {{opConfig.classFirst}}
+                    分类
                   </template>
                   <MenuItem
-                    v-for="opSecond in opConfig.classSecond"
-                    :key="opSecond"
-                    :name="opSecond"
-                  ><p @click="jumpToArticle(opSecond)">{{opSecond}}</p></MenuItem>
+                    v-for="category in breadTrans_keys"
+                    :key="category"
+                    :name="category"
+                  >
+                    <p @click="jumpToArticle(category)">{{breadTrans[category]}}</p>
+                  </MenuItem>
                 </Submenu>
               </Menu>
             </Sider>
@@ -34,35 +36,28 @@
 import BreadcrumbComponent from '~/components/breadcrumb';
 import LayoutHeader from './layout-header';
 import axios from 'axios';
+import _ from 'lodash';
+import { breadTrans } from '~/static/config';
 
 export default {
   data () {
       return {
-        sidebarConfig: [],
+        breadTrans,
       }
   },
   components:{
     LayoutHeader,
     BreadcrumbComponent,
   },
-  mounted(){
-    this.init();
+  computed:{
+    breadTrans_keys(){
+      return _.keys(this.breadTrans)
+    }
   },
   methods: {
-    init(){
-      axios.get('http://localhost:7777/config/Class')
-        .then((response) => {
-          let res = response.data;
-          if (res.status === 0) {
-            this.sidebarConfig = res.result.class;
-          } else {
-            this.$Message.error('数据获取失败，请稍后再试');
-          }
-        })
-    },
-    jumpToArticle(type){
+    jumpToArticle(path){
       this.$router.push({
-        path:`/articles/type/${type}`
+        path: `/articles/type/${path}`
       })
     }
   }

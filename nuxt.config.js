@@ -19,7 +19,8 @@ module.exports = {
   },
   // 引入UI组件
   plugins: [
-    { src: '~plugins/ui-view', ssr: false}
+    { src: '~plugins/ui-view', ssr: false },
+    { src: '~plugins/lodash', ssr: true }
   ],
 
   loading: { color: '#3B8070' },
@@ -35,6 +36,15 @@ module.exports = {
 
     loaders:[
       {
+        test: /iview.src.*js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015'],
+            plugins: ['transform-runtime']
+          }
+        }
+      }, {
         test: /\.css$/,
         loader: 'vue-style-loader!css-loader'
       }
@@ -52,5 +62,39 @@ module.exports = {
         })
       }
     }
-  }
+  },
+
+  modules: [
+    '@nuxtjs/axios'
+  ],
+  axios: {
+    proxy: true
+    // See https://github.com/nuxt-community/axios-module#options
+  },
+  proxy: {
+    '/api': {
+      target: 'https://banner-storage-ms.juejin.im',
+      pathRewrite: { '^/api': '' }
+    },
+    '/japi': {
+      target: 'https://gold-tag-ms.juejin.im',
+      pathRewrite: { '^/japi': '' }
+    },
+    '/rapi': {
+      target: 'https://recommender-api-ms.juejin.im',
+      pathRewrite: { '^/rapi': '' }
+    },
+    '/tapi': {
+      target: 'https://timeline-merger-ms.juejin.im',
+      pathRewrite: { '^/tapi': '' }
+    },
+    '/xapi': {
+      target: 'https://xiaoce-timeline-api-ms.juejin.im',
+      pathRewrite: { '^/xapi': '' }
+    },
+    '/content': {
+      target: 'https://api.growingio.com',
+      pathRewrite: { '^/content': '' }
+    }
+  },
 }

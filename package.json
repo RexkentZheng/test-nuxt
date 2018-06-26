@@ -26,6 +26,8 @@
     "nuxt": "^1.0.0"
   },
   "devDependencies": {
+    "@nuxtjs/axios": "^5.3.1",
+    "@nuxtjs/proxy": "^1.2.4",
     "babel-eslint": "^8.2.1",
     "babel-plugin-import": "^1.8.0",
     "eslint": "^4.15.0",

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <p v-if="articleList.length === 0">当前分类目前没有文章</p>
+    <Spin size="large" fix v-if="spinShow"></Spin>
     <ul v-if="articleList.length > 0">
       <li
         v-for="op in articleList"
-        :key="op.title"
+        :key="op.objectId"
       >
         <div class="one-article">
           <div class="title">
-            <a @click="jumpPage(op.title)">{{op.title}}</a>
+            <a :href="`http://fe.qiangdada.cn/entry/${op.objectId}`" target="_blank">{{op.title}}</a>
           </div>
           <div class="short-cut">
             <p>{{op.content}}</p>
@@ -20,11 +20,13 @@
 </template>
 <script>
 import axios from 'axios';
+import request from '~/service'
 
 export default {
   data(){
     return {
       articleList:[],
+      spinShow: true,
     };
   },
   created() {
@@ -35,26 +37,40 @@ export default {
   },
   methods:{
     init(){
-      const classSecond = this.$route.params.type;
-      axios.get('http://localhost:7777/articles/typeList', {
-        params:{
-          classSecond
-        }
-      }).then((response) =>{
-        let res = response.data;
-        if (res.status !== 0) {
-          this.$Message.error('数据请求出错，请稍后再试');
-        }
-        if (res.result) {
-          this.articleList = res.result.length > 0 ? res.result : []
+      this.getArticleList().then((res) => {
+        if (res.s === 1) {
+          this.articleList = res.d.entrylist;
+          this.articleList.forEach(item => {
+            if (!item.content) {
+              item.content = '假装这里有点内容';
+            }
+          });
+          this.spinShow = false;
         }
       })
     },
-    jumpPage(title){
-      this.$router.push({
-        path: `/articles/title/${title}`,
+    getArticleList(){
+      const transfrom = {
+        frontend: '5562b415e4b00c57d9b94ac8',
+        android: '5562b410e4b00c57d9b94a92',
+        backend: '5562b419e4b00c57d9b94ae2',
+        ai: '57be7c18128fe1005fa902de',
+        ios: '5562b405e4b00c57d9b94a41',
+        freebie: '5562b422e4b00c57d9b94b53',
+        article: '5562b428e4b00c57d9b94b9d',
+      }
+      const params = {
+        category: transfrom[this.$route.params.type],
+        ab: 'welcome_3',
+        src: 'web'
+      }
+      const response = async (params) => {
+        return await request.get('/tapi/v1/get_entry_by_rank', params)
+      }
+      return new Promise((resolve) => {
+        resolve(response(params));
       })
-    }
+    },
   }
 }
 </script>
