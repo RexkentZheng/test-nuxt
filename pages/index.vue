@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <Spin size="large" fix v-if="spinShow"></Spin>
     <ul class="main-content">
       <li
@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import { Input, Button, Table } from 'iview';
-import axios from 'axios';
 import 'normalize.css'
 import request from '~/service'
 

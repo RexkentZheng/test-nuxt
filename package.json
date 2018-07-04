@@ -30,6 +30,7 @@
     "@nuxtjs/proxy": "^1.2.4",
     "babel-eslint": "^8.2.1",
     "babel-plugin-import": "^1.8.0",
+    "bootstrap": "^4.1.1",
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",

@@ -7,7 +7,7 @@
         <Content :style="{padding: '24px 0', minHeight: '280px', background: '#fff'}">
           <Layout>
             <Sider hide-trigger :style="{background: '#fff'}">
-              <Menu active-name="1-2" theme="light" width="auto">
+              <Menu :active-name="this.$route.params.type" theme="light" width="auto">
                 <Submenu :name="1">
                   <template slot="title">
                     <Icon type="ios-navigate"></Icon>
@@ -24,7 +24,9 @@
               </Menu>
             </Sider>
             <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-              <nuxt/>
+              <div class="container">
+                <nuxt/>
+              </div>
             </Content>
           </Layout>
         </Content>

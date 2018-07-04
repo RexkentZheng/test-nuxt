@@ -1,7 +1,6 @@
 module.exports = {
   css: [
     'normalize.css',
-    './assets/main.css',
     '~assets/main.scss',
     'iview/dist/styles/iview.css',
   ],
@@ -19,38 +18,38 @@ module.exports = {
   },
   // 引入UI组件
   plugins: [
-    { src: '~plugins/ui-view', ssr: false },
-    { src: '~plugins/lodash', ssr: true }
+    { src: '~/plugins/iview.js', ssr: true }
   ],
 
   loading: { color: '#3B8070' },
 
   build: {
 
-    babel: {
-      "plugins": [["import", {
-        "libraryName": "iview",
-        "libraryDirectory": "src/components"
-      }]]
-    },
+    // babel: {
+    //   "plugins": [["import", {
+    //     "libraryName": "iview",
+    //     "libraryDirectory": "src/components"
+    //   }]]
+    // },
 
-    loaders:[
-      {
-        test: /iview.src.*js$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015'],
-            plugins: ['transform-runtime']
-          }
-        }
-      }, {
-        test: /\.css$/,
-        loader: 'vue-style-loader!css-loader'
-      }
-    ],
+    // loaders:[
+      // {
+      //   test: /iview.src.*js$/,
+      //   use: {
+      //     loader: 'babel-loader',
+      //     options: {
+      //       presets: ['es2015'],
+      //       plugins: ['transform-runtime']
+      //     }
+      //   }
+      // }, 
+      // {
+      //   test: /\.css$/,
+      //   loader: 'vue-style-loader!css-loader'
+      // }
+    // ],
 
-    vendor: ['axios','lodash','iview'],
+    vendor: ['axios','lodash'],
 
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
@@ -92,9 +91,9 @@ module.exports = {
       target: 'https://xiaoce-timeline-api-ms.juejin.im',
       pathRewrite: { '^/xapi': '' }
     },
-    '/content': {
-      target: 'https://api.growingio.com',
-      pathRewrite: { '^/content': '' }
+    '/login': {
+      target: 'https://juejin.im/auth/type/phoneNumber',
+      pathRewrite: { '^/login': '' }
     }
   },
 }
