@@ -1,9 +1,9 @@
 <template>
   <div class="layout">
     <Layout>
-      <LayoutHeader />
+      <layoutheader />
       <Layout :style="{padding: '0 50px'}">
-        <BreadcrumbComponent />
+        <bread />
         <Content :style="{padding: '24px 0', minHeight: '280px', background: '#fff'}">
           <Layout>
             <Sider hide-trigger :style="{background: '#fff'}">
@@ -35,8 +35,8 @@
   </div>
 </template>
 <script>
-import BreadcrumbComponent from '~/components/breadcrumb';
-import LayoutHeader from './layout-header';
+import bread from '~/components/breadCrumb';
+import layoutheader from '~/components/layoutHeader';
 import axios from 'axios';
 import _ from 'lodash';
 import { breadTrans } from '~/static/config';
@@ -48,8 +48,8 @@ export default {
       }
   },
   components:{
-    LayoutHeader,
-    BreadcrumbComponent,
+    layoutheader,
+    bread,
   },
   computed:{
     breadTrans_keys(){
@@ -68,21 +68,6 @@ export default {
 </script>
 
 <style>
-html {
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
-}
 .layout{
     border: 1px solid #d7dde4;
     background: #f5f7f9;

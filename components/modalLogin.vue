@@ -27,18 +27,32 @@
 <script>
   export default {
     name: 'login',
-    props: ['modalVisible'],
+    props: ['loginCount'],
     data () {
       return {
-          phoneNum: '',
-          password: '',
-          show: true,
+        phoneNum: '',
+        password: '',
+        show: true,
       }            
     },
+    watch: {
+      loginCount() {
+        if (this.phoneNum == '' ||
+          this.password == ''
+          ) {
+          return this.$Message.error('信息填写不完整!')
+        }
+        if (!(/^1[34578]\d{9}$/.test(this.phoneNum))) {
+          return this.$Message.error('请正确填写电话号码!')
+        }
+        if (!(/(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?=.*[A-Z])(?=.*[a-z])(?!.*\n).*$/.test(this.password))) {
+          return this.$Message.error('请正确填写密码，最小长度八位，包含数字符号以及大小写字母!')
+        }
+        console.log(`电话：${this.phoneNum}`);
+        console.log(`密码：${this.password}`);
+      }
+    },
     methods: {
-      getBackVisible() {
-        this.$emit('getVisible');
-      },
     }
   }
 </script>

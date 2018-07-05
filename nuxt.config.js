@@ -25,30 +25,6 @@ module.exports = {
 
   build: {
 
-    // babel: {
-    //   "plugins": [["import", {
-    //     "libraryName": "iview",
-    //     "libraryDirectory": "src/components"
-    //   }]]
-    // },
-
-    // loaders:[
-      // {
-      //   test: /iview.src.*js$/,
-      //   use: {
-      //     loader: 'babel-loader',
-      //     options: {
-      //       presets: ['es2015'],
-      //       plugins: ['transform-runtime']
-      //     }
-      //   }
-      // }, 
-      // {
-      //   test: /\.css$/,
-      //   loader: 'vue-style-loader!css-loader'
-      // }
-    // ],
-
     vendor: ['axios','lodash'],
 
     extend (config, { isDev, isClient }) {
@@ -68,7 +44,6 @@ module.exports = {
   ],
   axios: {
     proxy: true
-    // See https://github.com/nuxt-community/axios-module#options
   },
   proxy: {
     '/api': {
