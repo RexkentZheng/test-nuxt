@@ -35,7 +35,7 @@
   </div>
 </template>
 <script>
-import bread from '~/components/breadCrumb';
+import bread from '~/components/breadcrumb';
 import layoutheader from '~/components/layoutHeader';
 import _ from 'lodash';
 import { breadTrans } from '~/static/config';
