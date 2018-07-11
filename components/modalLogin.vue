@@ -22,7 +22,6 @@
       </Col>
     </Row>
   </div>
-  
 </template>
 <script>
   export default {

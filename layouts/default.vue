@@ -2,7 +2,7 @@
   <div class="layout">
     <Layout>
       <layoutheader />
-      <Layout :style="{padding: '0 50px'}">
+      <Layout :style="{padding: '0 400px'}">
         <bread />
         <Content :style="{padding: '24px 0', minHeight: '280px', background: '#fff'}">
           <Layout>
@@ -23,7 +23,7 @@
                 </Submenu>
               </Menu>
             </Sider>
-            <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+            <Content :style="{padding: '24px', background: '#fff'}">
               <div class="container">
                 <nuxt/>
               </div>
@@ -37,7 +37,6 @@
 <script>
 import bread from '~/components/breadCrumb';
 import layoutheader from '~/components/layoutHeader';
-import axios from 'axios';
 import _ from 'lodash';
 import { breadTrans } from '~/static/config';
 

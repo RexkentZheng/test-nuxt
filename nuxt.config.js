@@ -46,14 +46,6 @@ module.exports = {
     proxy: true
   },
   proxy: {
-    '/api': {
-      target: 'https://banner-storage-ms.juejin.im',
-      pathRewrite: { '^/api': '' }
-    },
-    '/japi': {
-      target: 'https://gold-tag-ms.juejin.im',
-      pathRewrite: { '^/japi': '' }
-    },
     '/rapi': {
       target: 'https://recommender-api-ms.juejin.im',
       pathRewrite: { '^/rapi': '' }
@@ -61,14 +53,6 @@ module.exports = {
     '/tapi': {
       target: 'https://timeline-merger-ms.juejin.im',
       pathRewrite: { '^/tapi': '' }
-    },
-    '/xapi': {
-      target: 'https://xiaoce-timeline-api-ms.juejin.im',
-      pathRewrite: { '^/xapi': '' }
-    },
-    '/login': {
-      target: 'https://juejin.im/auth/type/phoneNumber',
-      pathRewrite: { '^/login': '' }
     }
   },
 }

@@ -41,10 +41,10 @@
     <Modal
       v-model="registerModalVisible"
       @on-cancel="registerModalVisible = false"
-      @on-ok="registerCount += 1"    
+      @on-ok="registerAccount"    
     >
       <register
-        :registerCount="registerCount"
+        ref="register"
       />
     </Modal>
   </Header>
@@ -63,7 +63,6 @@ export default {
       loginModalVisible: false,
       loginCount: 0,
       registerModalVisible: false,
-      registerCount: 0,
     }
   },
   components: {
@@ -76,6 +75,9 @@ export default {
         path: url
       })
     },
+    registerAccount(){
+      this.$refs.register.registerAccount();
+    }
   }
 }
 </script>

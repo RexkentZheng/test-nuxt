@@ -37,7 +37,6 @@
 <script>
 export default {
   name: 'register',
-  props: ['registerCount'],
   data() {
     return {
       phoneNum: '',
@@ -45,8 +44,8 @@ export default {
       passwordSecond: '',
     }
   },
-  watch: {
-    registerCount (){
+  methods:{
+    registerAccount (){
       if (this.phoneNum === '' || this.passwordFirst === ''|| this.passwordSecond === '') {
         return this.$Message.error('信息填写不完整!');
       }
